@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SEM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="13179648-ed05-806e-bd1c-e40494060eca" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1472173148041-00294f0814a2?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 30.73%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">📝</span></div><h1 class="page-title">SEM</h1><p class="page-description"></p></header><div class="page-body"><p id="14179648-ed05-80d5-b679-e4204a516279" class="">AN: 2:00 pm - 5:00 pm</p><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Maths - 25/11 (AN)</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-1</summary><div class="indented"><ul id="14179648-ed05-80e9-a311-f63e7f4177f3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Sets</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80c4-b091-e5bf6aed164f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Operations on sets</span><div class="indented"></div></li></ul><ul id="14179648-ed05-806b-b89b-f0966506f89c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Laws of set theory</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8076-8943-e86974857494" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Partition of a set</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8045-b2c2-cf459b87f9bb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Cartesian product of sets</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80e5-98df-e6c6df03ba9b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Relations</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80a1-961a-f4f46050da02" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Properties</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8069-a54f-f9ab576e77e4" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Equivalence relation and partial order relation</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8089-8522-f8b73d494f28" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Poset</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8083-8c94-f566755438e0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Graphs of relations</span><div class="indented"></div></li></ul><ul id="14179648-ed05-800d-bba2-f32a185bd4de" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Digraphs</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80d6-82d2-c7392d325c2d" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Hasse diagram</span><div class="indented"></div></li></ul><ul id="14179648-ed05-805f-bd78-c39daac81d2a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Closures of relations</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80d3-9739-dc00e82cfd4c" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Transitive closure and Warshall’s algorithm</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8043-8275-d798d9bda64e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Functions</span><div class="indented"></div></li></ul><ul id="14179648-ed05-803c-8884-ca9853fba886" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Types of functions</span><div class="indented"></div></li></ul><ul id="14179648-ed05-803d-9c19-ebeda9dc47fd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Composition of functions</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80e8-84f7-ca3083ce0176" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Properties</span><div class="indented"></div></li></ul><ul id="14179648-ed05-802b-a332-fb843ee02e6e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Inverse of functions</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8024-a86d-d38d4ee3b7c1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Necessary and sufficient condition for existence of inverse function</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80ff-afc9-fdc74062c3ff" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Uniqueness of identity</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8067-9a35-f97c6d9ba524" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Inverse of composition</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-2</summary><div class="indented"><ul id="e3a73548-d55d-4b4d-8acf-5491d1dd2504" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Permutation and combination</span><div class="indented"></div></li></ul><ul id="edd9d8d6-328e-497c-a768-9efc31d5bf34" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Addition and product rules</span><div class="indented"></div></li></ul><ul id="fa1de660-9ce2-492c-bf3c-a37734043267" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Principle of inclusion and exclusion</span><div class="indented"></div></li></ul><ul id="36789639-e8ec-41b0-8cb3-912ce466f5b3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Pigeon-hole principle and generalized pigeon-hole principle</span><div class="indented"></div></li></ul><ul id="3c8572e1-360e-46cb-b710-2d8a6e68862e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Divisibility and prime numbers</span><div class="indented"></div></li></ul><ul id="6902e7c1-d8fa-42a6-8c59-17f4f5d141bc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Fundamental theorem of arithmetic</span><div class="indented"></div></li></ul><ul id="5ea59075-0abe-42e1-907f-d5f31f06ced3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Prime factorization</span><div class="indented"></div></li></ul><ul id="ef7dfe03-e31f-42a8-8e11-a79f9fe0e79f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Division algorithm</span><div class="indented"></div></li></ul><ul id="8b2bea95-7a84-4d81-92a9-1f696d66d39d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Greatest common divisor</span><div class="indented"></div></li></ul><ul id="5115ec8b-58f5-4c12-8bc5-1ae10cc9f933" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Properties</span><div class="indented"></div></li></ul><ul id="76156fde-15c3-4536-a658-ca6a89a31e44" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Euclid’s algorithm</span><div class="indented"></div></li></ul><ul id="b540614b-8540-46aa-9cf9-e8180cb75bdd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Least common multiple</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-3</summary><div class="indented"><ul id="e6640a7f-ef4e-4cb3-ab92-d1571f2012b0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Propositions and logical operators</span><div class="indented"></div></li></ul><ul id="a206ce41-f861-416a-a21f-7abc510f55b8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Truth tables</span><div class="indented"></div></li></ul><ul id="c747f156-9932-4efe-b225-b6b80c8e371d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Converse, inverse, and contrapositive</span><div class="indented"></div></li></ul><ul id="8f574cd7-bd9b-4c8f-8971-d9ed01cc4790" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Tautology and contradiction</span><div class="indented"></div></li></ul><ul id="27845112-71ce-41d3-bca6-f7779b701df9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Equivalences</span><div class="indented"></div></li></ul><ul id="0ce4a8f6-e4b7-4eb6-a47a-9e6ebd143f09" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Implications</span><div class="indented"></div></li></ul><ul id="bab6945a-613a-43dc-8e72-4b2fcfc206a0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Laws of logic</span><div class="indented"></div></li></ul><ul id="aa6bfb7a-1301-4b9a-86fe-a66ad33a21d0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Inference theory</span><div class="indented"></div></li></ul><ul id="531b1542-2926-4937-baf9-7b12a16ae4b9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Rules of inference</span><div class="indented"></div></li></ul><ul id="bc4f8479-f8a7-49f0-ba18-ab23802b8fd0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Direct method</span><div class="indented"></div></li></ul><ul id="6520b663-4e3e-4446-b7af-db7c9e761768" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CP rule</span><div class="indented"></div></li></ul><ul id="453d9743-e099-448a-bfdf-8663ac5e6e51" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Inconsistency</span><div class="indented"></div></li></ul><ul id="b318c9d0-63ed-42c4-a11c-65ffdfb5cac1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Indirect method</span><div class="indented"></div></li></ul><ul id="c49b0eea-792b-4a5a-a400-ceb21dc1091e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Principle of mathematical induction</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-4</summary><div class="indented"><ul id="13179648-ed05-8073-bd11-e5f642a35981" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Groups</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e1-9b8a-e5ecfe882ce4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Permutation group</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80f8-abe4-ec2644e02770" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Cyclic group</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8057-84c7-d395cf7ebdba" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Properties</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80dd-814c-f8436ba6eb36" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Subgroup</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80ce-a369-cb170c164ca0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Group homomorphism</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e3-863f-dc7abd9d47c6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Properties</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8023-be0f-c1d08fd75b84" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Ring</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8010-a3ee-d797a00eaddd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Zero divisor</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80ec-9f7f-c8e23e6c9a34" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Integral domain</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8023-8bc2-dc20e97560f2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Field</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8033-8d0d-e9e810dd1c48" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Coding theory</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80d2-8429-fbf9fe7f966b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Group code</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80b6-907b-d6b189d50c7f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Hamming codes</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8007-b3e0-cf40d89d5994" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error correction using matrices</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8027-93b9-f15fb9cd0f31" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error correction</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8051-8c7f-cd99f263ed35" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Decoding group codes</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-5</summary><div class="indented"><ul id="13179648-ed05-80f4-a33e-f8dc7827d55e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Definitions</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80d5-8b48-d1ba9edaf3d0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Handshaking theorem</span><div class="indented"></div></li></ul><ul id="13179648-ed05-801a-b734-fe4e1a553808" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Some special graphs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-806f-ab7e-d71411dcef09" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Isomorphism of graphs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80cc-b7ea-dc4a18dea554" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Paths, cycles, and circuits</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e2-9024-e0997f4d6e2c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Connectivity in undirected graphs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8006-98a8-eff03ca77f8a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Eulerian and Hamiltonian graphs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8090-a42d-c22646a1ab96" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Matrix representation of graphs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-802c-949e-ccfdbbc7fed8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Isomorphism using adjacency</span><div class="indented"></div></li></ul><ul id="13179648-ed05-802c-a3ce-c9bff75c2193" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Digraphs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80c7-b56d-e8d84d2560e8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Trees</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8045-9f97-eb75068ed6de" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Properties</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80f5-965c-fe088788791f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Spanning tree</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8082-a448-cf4f76a4d9ba" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Kruskal’s algorithm</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e0-9a93-f4944e980c67" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Graph coloring</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8006-afe7-d8e944d3e524" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Chromatic number</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8008-8ee0-eb0d24c2926f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Four color theorem (statement only)</span><div class="indented"></div></li></ul></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Automata - 26/11 (AN)</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-1</summary><div class="indented"><ul id="14179648-ed05-8063-b7c1-d44a5730a746" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Deterministic and Non-Deterministic Finite Automata</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8016-ab03-e9cf6e39ed20" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Finite Automata with ε-moves</span><div class="indented"></div></li></ul><ul id="14179648-ed05-804b-90d3-c8f4d77c4f67" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Regular expressions – Equivalence of NFA and DFA</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8059-9589-ecc900abab4a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Two-way finite automata</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80c9-b362-d3770cb7a922" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Moore and Mealy machines</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80dd-b4ea-c60d9d8c6a6c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Equivalence of Moore and Mealy machines</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80e5-aeeb-c1d1924761fa" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Applications of finite automata</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-2</summary><div class="indented"><ul id="97cf4734-07e9-448b-8582-a934be24dcff" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Properties of regular sets</span><div class="indented"></div></li></ul><ul id="ddb6a42f-d3d3-4a95-826c-23870f651fcf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Context-Free Grammars and Languages</span><div class="indented"></div></li></ul><ul id="37d5e95b-fa35-475f-8338-26d9d061c109" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Derivation trees</span><div class="indented"></div></li></ul><ul id="92a90fbd-cdf4-4d04-987a-32550a6dff2c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Simplification of CFG: Elimination of useless symbols</span><div class="indented"></div></li></ul><ul id="6063e281-99ac-476a-83e7-fa6a9a8a9404" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Simplification of CFG: Unit productions, Null productions</span><div class="indented"></div></li></ul><ul id="aa19ad92-27a7-4648-8d79-ad0361e1195c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Chomsky Normal Forms</span><div class="indented"></div></li></ul><ul id="ebcef89b-378d-47ef-aaa4-2bfede5c9abd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Greibach Normal Forms</span><div class="indented"></div></li></ul><ul id="b9d84e90-34a5-4331-9775-751caec3c6d1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Ambiguous and unambiguous grammars</span><div class="indented"></div></li></ul><ul id="4580b9ec-0798-4395-9bfc-5ab18ae6ccdf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Minimization of finite automata</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-3</summary><div class="indented"><ul id="fb311091-2bea-45e4-b15a-075fc6b3115b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Deterministic Push Down Automata</span><div class="indented"></div></li></ul><ul id="34ae7871-7da5-449f-ac2b-c5ae866167cd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Non-Deterministic Push Down Automata</span><div class="indented"></div></li></ul><ul id="554bdf52-b93f-4d31-b7c6-4677c27a5623" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Equivalence of Pushdown Automata and context-free languages</span><div class="indented"></div></li></ul><ul id="f3c13e9d-e6e1-431d-9633-81c1aab8de35" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Properties of CFL</span><div class="indented"></div></li></ul><ul id="e470e8b4-2f70-4caf-8799-572073adc67f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Applications of pumping lemma</span><div class="indented"></div></li></ul><ul id="581765a2-3c27-4342-b164-35eec87c9bdb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Closure properties of CFL</span><div class="indented"></div></li></ul><ul id="8724f55d-dc9c-47b3-bb15-8bf9f6c18633" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Decision algorithms</span><div class="indented"></div></li></ul><ul id="9d0a91b9-eb56-468a-888b-08bde2befa7a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Overview of Top-down parsing</span><div class="indented"></div></li></ul><ul id="cb941c99-0394-4c19-8221-861129993665" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Overview of Bottom-up parsing</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-4</summary><div class="indented"><ul id="13179648-ed05-8033-af7d-ee2d4325c468" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Turing machines (TM)</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80d9-aaf7-daf9c4c0ec0b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Computable languages and functions</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e7-ba78-cb75caf315a8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Turing machine constructions</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8019-a42d-ffd7f3b917c3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Storage in finite control</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8082-a7ca-c7a53f596fd5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variations of TMs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-800b-84df-efdc1f87e7e8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Church-Turing thesis</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8088-9d7a-eec97b4b247c" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Universal Turing machine</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8032-b673-dc48c481d8ab" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Recursive and recursively enumerable languages</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-5</summary><div class="indented"><ul id="13179648-ed05-8070-905d-f0a15292ca6d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Time and Space complexity of TMs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-800b-a4d8-e05b0036ca4d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Complexity classes</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8019-a57d-d32aaf45a9be" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Introduction to NP-Hardness and NP-Completeness</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8023-9a8a-d4ff55cd1f63" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Post Correspondence Problems (PCP)</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8023-8fa6-cf3e28185d70" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Modified PCP</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8051-a897-d46db05b943c" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Halting Problems</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8075-a54c-fda3918ce853" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Undecidability Problems</span><div class="indented"></div></li></ul></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">CN - 27/11 (AN)</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-1</summary><div class="indented"><ul id="14179648-ed05-80fe-9079-cd541dc0d341" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Network Types: LAN, MAN, PAN, WAN</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80d3-9c74-e74db1cf0888" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Network Topology: BUS, STAR, RING, MESH, HYBRID</span><div class="indented"></div></li></ul><ul id="14179648-ed05-801a-ac7e-e570631c68a3" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Switching: Circuit Switching, Packet Switching</span><div class="indented"></div></li></ul><ul id="14179648-ed05-809d-bdcf-c0a8cf80e5b3" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">OSI Layered Architecture</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8090-9c35-c87d788b3c5f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">TCP/IP Model</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8018-a1c1-c5d1d99a5727" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Physical Layer Overview</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80e7-b826-e8e8d1c80760" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Latency, Bandwidth, Delay</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80ba-84d0-f3940df9118c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Guided Media: Twisted pair, Coaxial cable, Fiber optic cable</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8067-982d-f1299877f3de" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Unguided Media: Radio waves, Microwaves, Infrared</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-2</summary><div class="indented"><ul id="1e0d1bbe-df73-43db-b384-484a407ce1d8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">IPV4 Addressing</span><div class="indented"></div></li></ul><ul id="bb1bf49a-224a-4d21-a308-a0c08684fd72" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Address space</span><div class="indented"></div></li></ul><ul id="7e6a83ff-2e52-4588-ba6b-6685340b6af8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Classful addressing</span><div class="indented"></div></li></ul><ul id="70f58ede-ed36-4242-92b2-6c28534597d8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Subnet mask</span><div class="indented"></div></li></ul><ul id="6bcb3580-c604-4c55-95d2-06193b235583" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Classless Addressing</span><div class="indented"></div></li></ul><ul id="cf7b60e3-4216-410e-bd1a-4ba647443f98" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">FLSM</span><div class="indented"></div></li></ul><ul id="001f9bd7-0fb4-4a3f-9605-ca8cfbadb706" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">VLSM</span><div class="indented"></div></li></ul><ul id="53aad080-cf0f-4cc0-a675-c210bd8fa6b6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">NAT</span><div class="indented"></div></li></ul><ul id="09ce0384-b634-4ad8-9418-7f5414e2443d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Super netting</span><div class="indented"></div></li></ul><ul id="c5474012-1a8b-48d8-aa25-f4ff0d0eec8e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Network Devices: Hub, Repeaters, Switch, Bridge, Router</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-3</summary><div class="indented"><ul id="9d807c27-56b3-46dc-b9d1-b876a45a0881" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Forwarding of IP Packets</span><div class="indented"></div></li></ul><ul id="25291b79-e96d-4091-a1b7-aa54426203ae" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Static and Default Routing</span><div class="indented"></div></li></ul><ul id="54f9d4ed-56b0-4831-a24c-dcf493920caa" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Unicast Routing Algorithms: Distance Vector Routing, Link State Routing, Path Vector Routing</span><div class="indented"></div></li></ul><ul id="d27bb97e-3373-4593-8723-3db8c1ca69b2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Protocols: RIP V1, RIP V2, OSPF, BGP, EIGRP</span><div class="indented"></div></li></ul><ul id="29654e40-18fe-466a-b84c-7eff0ff8a1e1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Multicasting Basics</span><div class="indented"></div></li></ul><ul id="fb835613-a913-46b6-b352-fac23ab66481" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">IPV6 Addressing Basics</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-4</summary><div class="indented"><ul id="13179648-ed05-809a-9632-c57437c78ffd" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">ALOHA</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8048-805e-f18c480d3126" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CSMA/CD</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8095-ae75-cf4fe27fac63" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CSMA/CA</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e7-83d5-dad256364874" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Ethernet</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80ca-9439-f9331b934400" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Token Ring</span><div class="indented"></div></li></ul><ul id="13179648-ed05-807a-9c02-f6c9905cc628" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Flow Control: Stop and Wait</span><div class="indented"></div></li></ul><ul id="13179648-ed05-807a-a0a0-f83b2d09defc" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Flow Control: Sliding Window</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8056-b524-e51170d28b19" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error Control: Stop and Wait ARQ</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80a3-a085-c5f868cbec1c" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error Control: Sliding Window ARQ</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80a9-99e2-cfe37edf8c9c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error Detection: Parity Check</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80ba-b21c-fd3db34f5ad0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error Detection: Checksum</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80d5-be8a-c771fcb0e126" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error Detection: CRC</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80af-9583-ecc1e9fd5db3" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error Correction: Hamming codes</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8047-930a-f1b1825309cf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Data-Link Layer Protocols: HDLC</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8080-836f-f5739d18ab17" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Data-Link Layer Protocols: PPP</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-5</summary><div class="indented"><ul id="13179648-ed05-80dc-a07e-e2da0300a4ce" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Port Numbers</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8053-91fd-ef1c16c411df" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">User Datagram Protocol</span><div class="indented"></div></li></ul><ul id="13179648-ed05-808f-916b-fdc4426ab10a" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Transmission Control Protocol</span><div class="indented"></div></li></ul><ul id="13179648-ed05-803a-b085-c35443108d7a" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">WWW and HTTP</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8095-a671-f52df8cb6334" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">FTP</span><div class="indented"></div></li></ul><ul id="13179648-ed05-800a-9a76-fbaf42443dd9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Email</span><div class="indented"></div></li></ul><ul id="13179648-ed05-801b-accf-f67e5a38bd0d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Telnet</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80d6-ae45-d22ae99a38ba" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">DNS</span><div class="indented"></div></li></ul></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Wireless -28/11 (AN)</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-1</summary><div class="indented"><ul id="14179648-ed05-80b6-9161-e78a5bd29a86" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Cellphone Generations 1G, 2G, 2.5G, 3G, 4G</span><div class="indented"></div></li></ul><ul id="14179648-ed05-801f-928c-feefd3af09a1" class="block-color-default to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">4G Transmission Introduction</span><div class="indented"></div></li></ul><ul id="14179648-ed05-802c-b10a-c59b09010926" class="block-color-default to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">4G Transmission Fundamentals</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80cf-bbe9-fb0f54a09d26" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Time domain concepts</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8068-ab57-ecc5be80fb5b" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Frequency domain concepts</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80ad-bfee-d76377c83dbc" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Radio Media</span><div class="indented"></div></li></ul><ul id="14179648-ed05-805f-9c12-c9ff9f55e0ca" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Analog Vs Digital</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80f4-a409-d5cfdbdfcaf9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Channel capacity</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80e5-9033-cdcd2e1e67e8" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Transmission media</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8027-abc8-c7512f327c6d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Signaling Schemes</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-2</summary><div class="indented"><ul id="3cb15c08-fc0c-4b79-b2f7-f80ef29e11cc" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Communication Networks: LANs, MANs, WANs</span><div class="indented"></div></li></ul><ul id="0f6778fe-3843-40d1-a0fe-6b6feea97619" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Circuit switching</span><div class="indented"></div></li></ul><ul id="79f51cc1-0c4b-4578-951c-be9ab2573eea" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Packet switching</span><div class="indented"></div></li></ul><ul id="a5693470-6f82-4810-a3d1-cc7bc96d442a" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">ATM Cellular Networks Introduction</span><div class="indented"></div></li></ul><ul id="a811ab07-3f96-45d4-b074-606ae70729d5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Cells</span><div class="indented"></div></li></ul><ul id="1db91556-8cc3-4e89-aace-5fb9db61b255" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Duplexing</span><div class="indented"></div></li></ul><ul id="67e03cfa-6345-4668-8f5f-29948826fb24" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Multiplexing</span><div class="indented"></div></li></ul><ul id="d27cecdd-1bef-4d00-89d8-dd35fec087be" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Voice coding</span><div class="indented"></div></li></ul><ul id="c9e9761e-6f6a-4d92-8754-cac71e90161f" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Multiple Access Techniques: FDMA, TDMA, SDMA, CDMA, Spectral efficiency</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-3</summary><div class="indented"><ul id="c9c1795a-6b39-491d-b651-72558ad1d56a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Personal communication: Introduction</span><div class="indented"></div></li></ul><ul id="52aee83c-5428-4ef0-91ae-fcc6c9868221" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">HSCSD</span><div class="indented"></div></li></ul><ul id="dab00f2e-fee3-47de-925e-bcc64b952cc1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">GPRS</span><div class="indented"></div></li></ul><ul id="df6ec1e6-68f5-4911-a14a-76be2aec0e78" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">D-AMPS</span><div class="indented"></div></li></ul><ul id="454aaa42-9b77-4c1d-bf73-730462ba3372" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CDMA One</span><div class="indented"></div></li></ul><ul id="5a8c9e2e-de5d-4bbb-aab9-54aad7844d4a" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CDMA Two</span><div class="indented"></div></li></ul><ul id="6ce7607e-4464-4028-82d8-16ce824c4663" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Packet Data Systems</span><div class="indented"></div></li></ul><ul id="b9d7d41a-1501-4978-96ec-80279cd2e102" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">GSM-HSCSD with architecture</span><div class="indented"></div></li></ul><ul id="28edcb7f-164d-41c4-889a-bca8a93be1fb" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">GPRS with architecture</span><div class="indented"></div></li></ul><ul id="55d9099b-51a0-4668-bd10-3edd34a3ba0f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">D-AMPS</span><div class="indented"></div></li></ul><ul id="d93ccb87-92c9-4427-a9f6-c2cea99d4c90" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CDMA Introduction</span><div class="indented"></div></li></ul><ul id="08e76ef7-3155-45d8-b986-93f888d0c4df" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CDMA One</span><div class="indented"></div></li></ul><ul id="8d3d5512-e2fd-43ab-980b-9cd1c3f83955" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CDMA Two</span><div class="indented"></div></li></ul><ul id="438ec042-ba95-4159-b95b-b563adba27a3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Packet Data Systems</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-4</summary><div class="indented"><p id="13779648-ed05-80ea-9dfa-ce89b9e59d8c" class="">Red = 12 marker and yellow = 4 marker</p><ul id="13179648-ed05-8030-acd2-f712a528d576" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">3G Introduction</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80cc-8232-c31f03da76af" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">MT-2000 Introduction</span><div class="indented"></div></li></ul><ul id="13179648-ed05-804b-9fae-e57562805519" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">IMT-2000</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8099-9394-e7e470c90704" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">W-CDMA Introduction</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80f1-b3b2-e025c58da533" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">W-CDMA</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80b2-a19c-f85048677b13" class="block-color-yellow_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">CDMA 2000 Introduction</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80fd-8be3-ffbf64c91342" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">EDGE</span><div class="indented"></div></li></ul><ul id="13179648-ed05-809b-b346-f9948087f381" class="block-color-yellow_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Wi-Fi</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8087-8674-e23610449aa3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">WiMAX Introduction</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80c6-bda5-f27954bcad00" class="block-color-yellow_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">WiMAX</span><div class="indented"></div></li></ul><ul id="13179648-ed05-800c-9037-de2b905be4cd" class="block-color-yellow_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">OFDM</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8053-862d-d8119036aa76" class="block-color-yellow_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">MIMO</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-5</summary><div class="indented"><ul id="13179648-ed05-8068-846f-e101ec4c208d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Mobile Data Services Introduction</span><div class="indented"></div></li></ul><ul id="13179648-ed05-809c-9ded-c4630f9eaa8e" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Messaging</span><div class="indented"></div></li></ul><ul id="13179648-ed05-800e-9a40-c91f3cb9dd8c" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Wireless web</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8049-8191-db25b74a4254" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">WAP</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8048-8ffb-f8b9d979ea65" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Site design</span><div class="indented"></div></li></ul><ul id="13179648-ed05-807c-8e39-d25c1b240e1e" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Short-Range Wireless Networks</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e9-999f-f28cc07ce17d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Unlicensed spectrum</span><div class="indented"></div></li></ul><ul id="13179648-ed05-802e-9d0e-c0af6a80733f" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">WLANs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e8-8c15-ff034f8159e7" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Cordless telephony</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8034-b8d8-ef58890b1623" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">IrDA</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8031-94ee-c84c7f8ae914" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Bluetooth</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8037-8261-fe723aa457cd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Smart Phones</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8014-8587-ce097e66715a" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Future phones</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80df-8f16-c146a5e98f5e" class="block-color-red_background to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Mobile OSs</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80c2-82a5-ea35d399585c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Smart phone applications</span><div class="indented"></div></li></ul></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">ANN - 29/11 (FN)</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-1</summary><div class="indented"><ul id="14179648-ed05-801b-a947-fcac727d6386" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">History of neural network research: Biological inspiration</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80dc-b32e-fde769beba6a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Neural computation</span><div class="indented"></div></li></ul><ul id="14179648-ed05-806b-8961-d480739b1be8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Models of computation</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8050-b852-eeb7c562e6ed" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Elements of computing models</span><div class="indented"></div></li></ul><ul id="14179648-ed05-805c-8d02-d6e84bbb6db2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Network of neurons: Structure</span><div class="indented"></div></li></ul><ul id="14179648-ed05-804c-90da-c808455abf87" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Information processing at neurons and synapses</span><div class="indented"></div></li></ul><ul id="14179648-ed05-801f-89e4-e97a99ee7f4d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Information storage</span><div class="indented"></div></li></ul><ul id="14179648-ed05-809d-88f8-c262add25d6a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Neurons as self-organizing systems</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8000-9a78-ea68c10d2c2c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Artificial Neural Networks: Network of primitive functions</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80f2-8871-c0461437aac6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Approximation of functions</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8002-8a8f-c2e7b67e00ef" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Neuron Model: Single and multiple input neurons</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80c0-be34-e30fea012a0f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Transfer functions</span><div class="indented"></div></li></ul><ul id="14179648-ed05-803e-aa47-d0364c8a2ef6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Network architectures: Single-layered and multi-layered neurons</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8055-83ca-d5384122d752" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Recurrent Networks</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-2</summary><div class="indented"><ul id="d128adfe-8d23-4f01-a95a-e73a7bd7cb34" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Introduction to Perceptron</span><div class="indented"></div></li></ul><ul id="a0bcef81-1120-47b0-978d-310506588c97" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Perceptron Architecture</span><div class="indented"></div></li></ul><ul id="b935ae5c-dae8-433d-83f7-5207a57e1ff9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Single Neuron Perceptron</span><div class="indented"></div></li></ul><ul id="7f9e0721-407b-47cd-8748-9154f26cc2e4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Multi Neuron Perceptron</span><div class="indented"></div></li></ul><ul id="5504992b-afda-4e54-87ae-d4ab1424411f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Perceptron learning rule</span><div class="indented"></div></li></ul><ul id="f8d9289b-0005-462e-8b38-71a1a36d1d2f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Constructing Learning rules</span><div class="indented"></div></li></ul><ul id="40ee0b8f-71c9-4707-bb60-290277dd3571" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Unified Learning rule</span><div class="indented"></div></li></ul><ul id="ffc06fc5-2887-4a7f-aa37-92e77346fcc9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Training multi neuron perceptron</span><div class="indented"></div></li></ul><ul id="5585c992-6e74-4dfc-b7f7-51b98759aa46" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Complexity of perceptron learning</span><div class="indented"></div></li></ul><ul id="bfc0ee8a-89fc-46a0-bdd3-424264d8cee0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Computational Limits of Perception</span><div class="indented"></div></li></ul><ul id="db84bc6e-0885-4f8a-841a-42d6add572f8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Linearly separable functions</span><div class="indented"></div></li></ul><ul id="d9efc2e5-b19a-4205-b18b-0e9b4bc10641" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Learning XOR</span><div class="indented"></div></li></ul><ul id="8affef0b-1303-41a5-aad1-29bd1809db73" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Feed forward Networks</span><div class="indented"></div></li></ul><ul id="84141704-e9e3-419b-81f7-26bae36af08a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Back propagation</span><div class="indented"></div></li></ul><ul id="a4c389bc-17ef-4be6-bcba-bb464e16e29e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Chain rule Calculus</span><div class="indented"></div></li></ul><ul id="3782c0ae-464e-4e86-9fa3-ad7073b82ae9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Back-Propagation Computation in Fully-Connected Multi-layer Perceptron</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-3</summary><div class="indented"><ul id="ee7cb112-086f-4c6e-9a08-0ba01c71ab1f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Paradigms of Learning</span><div class="indented"></div></li></ul><ul id="5945ef21-3483-4702-90f0-0d27e90cb658" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Using training samples</span><div class="indented"></div></li></ul><ul id="eeeac313-c7c6-4576-897d-270d30c009eb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Gradient Optimization Procedure</span><div class="indented"></div></li></ul><ul id="f2711c56-bfe9-44b4-ab02-ecc6ff3c07c5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Batch Gradient Descent</span><div class="indented"></div></li></ul><ul id="46569146-e716-46d3-8cbf-42b4c5e6cde7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Stochastic Gradient Descent</span><div class="indented"></div></li></ul><ul id="14b18af1-5b7f-4dd4-b7f4-4a47c697f5e5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Mini-Batch Gradient Descent</span><div class="indented"></div></li></ul><ul id="3ff3b816-153e-483a-ac28-fb638df4a4bf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Hebbian learning rule</span><div class="indented"></div></li></ul><ul id="ea1d9256-28e6-4408-a4d7-fb8d5733178a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Delta learning rule</span><div class="indented"></div></li></ul><ul id="089236c5-b83b-4093-a91c-5b23931977f7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Convergence and local minima</span><div class="indented"></div></li></ul><ul id="a7365649-146b-475d-95c9-72a49fe9a885" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Representational power of feed forward networks</span><div class="indented"></div></li></ul><ul id="1ca3f56e-9817-401b-b8b2-3d3f2a981fcf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Hypothesis search space and inductive bias</span><div class="indented"></div></li></ul><ul id="7b5dcfaf-46d7-49b5-bb1b-19dc089b6fcf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Generalization</span><div class="indented"></div></li></ul><ul id="8f34f5d4-8c69-42b6-b941-f3f40008e5ec" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Overfitting and stopping criterion</span><div class="indented"></div></li></ul><ul id="5868171f-b5cf-49f4-a125-81f580db7462" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error functions</span><div class="indented"></div></li></ul><ul id="b59f07cd-b276-4278-b2e0-fcd96b259340" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error minimizing procedures</span><div class="indented"></div></li></ul><ul id="de663adc-9165-4831-b346-0d5ce1ca41dd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Hebbian learning</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-4</summary><div class="indented"><ul id="13179648-ed05-80e5-bb5a-f167f32f0af1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Unsupervised learning in neural networks</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80a7-8bc7-c4379bca894b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Hebbian learning rule</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8025-a642-ffe0b69584ea" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Principle Component Learning</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8024-8479-fbb94119f43b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Learning Vector Quantizer-I</span><div class="indented"></div></li></ul><ul id="13179648-ed05-800c-838a-ceeecf1d47cc" class="toggle"><li><details open=""><summary>Self Organizing Maps:</summary><ul id="13179648-ed05-80d3-b110-c0518ee2ab67" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Functionality</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8081-9e54-e5464811f421" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Training</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8059-89d2-f15de8721306" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Topology Function</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80c5-b6a9-ce59b8da6e2e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Decreasing Learning Rate</span><div class="indented"></div></li></ul><ul id="13179648-ed05-804d-9a84-f62bfd83415e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variations of SOMs</span><div class="indented"></div></li></ul></details></li></ul><ul id="13179648-ed05-80f4-b2a6-f2c4ebed0f0e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Neural gas</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80fc-aea5-fb63e956f4c5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Multi-SOM</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80dd-8590-eb98e7847a21" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Multi-neural gas</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80b3-ac8c-c3ffa045c3e6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Growing neural gas</span><div class="indented"></div></li></ul><ul id="13179648-ed05-807d-9ae9-c85071760edd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Adaptive Resonance Theory</span><div class="indented"></div></li></ul><ul id="13179648-ed05-808b-96fd-d794d8725165" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Orienting subsystems</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8091-a3d3-e085f63f1204" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Learning Laws</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-5</summary><div class="indented"><ul id="13179648-ed05-8058-8686-c3de80b73805" class="toggle"><li><details open=""><summary>Pretraining the model:</summary><ul id="13179648-ed05-8071-8ed1-f8fe3b6be754" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Data selection</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8042-bc8a-f455e46e5d89" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Preprocessing</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80b4-b3fb-c6f39f577f65" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Selection of network architecture</span><div class="indented"></div></li></ul></details></li></ul><ul id="13179648-ed05-80a5-8255-de2fbb17d880" class="toggle"><li><details open=""><summary>Training the network:</summary><ul id="13179648-ed05-801b-a4f1-db1685a788b4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Initializing weights</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80ba-9308-cae0e3cda5bd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Choice of training algorithm</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8017-aa6e-e7a59e30b386" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Stopping criteria</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8022-960a-d71962149bda" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Choice of performance function</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8008-9437-eca9843cc6db" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Committees of Networks</span><div class="indented"></div></li></ul></details></li></ul><ul id="13179648-ed05-80d6-b935-c668f54eb062" class="toggle"><li><details open=""><summary>Post Training Analysis:</summary><ul id="13179648-ed05-80df-a489-e4a4be3533a8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Fitting</span><div class="indented"></div></li></ul><ul id="13179648-ed05-804d-9c96-d46c55b9f0c5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Pattern Recognition</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8051-bdcb-cbaae92d9723" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Clustering</span><div class="indented"></div></li></ul></details></li></ul><ul id="13179648-ed05-800c-a2b4-efb774cc3e63" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Time delay and Recurrent Neural Networks</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80e3-b0b5-f9dd339c0d29" class="toggle"><li><details open=""><summary>Case Studies:</summary><ul id="13179648-ed05-800e-841c-ce46bacb9b3e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Smart Sensor system with function approximation</span><div class="indented"></div></li></ul><ul id="13179648-ed05-80da-9f00-d4c7bac17f7c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Myocardial Infarction Recognition using pattern recognition</span><div class="indented"></div></li></ul><ul id="13179648-ed05-8055-94f3-dd1c5b2b4c80" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Forest cover problem using Clustering</span><div class="indented"></div></li></ul></details></li></ul></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">DSP - 29/11 (FN)</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-1</summary><div class="indented"><ul id="14179648-ed05-8065-ac4f-e5ebeeb4042a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Introduction</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8025-b955-e02bb6ff8b9d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Information Systems</span><div class="indented"></div></li></ul><ul id="14179648-ed05-803f-9c04-fb1edd5dfdf3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Database Management Systems</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80cd-ba41-d4ee8ad22314" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Information Security Architecture</span><div class="indented"></div></li></ul><ul id="14179648-ed05-800d-bf00-e5abef78eb59" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Database Security</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80e7-808e-eb73a60336f7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Asset Types and Their Value</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8053-8b81-d7f752b2e394" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Security Methods</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80c7-8b66-fa80225473a9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Operating System Security Fundamentals</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80b5-a331-cc9190391222" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Introduction to Operating Systems</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8095-bbe5-c1809a4017dc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Overview of Operating System Security</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8056-a8d8-fe5c5a2b2adc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Components of an Operating System Security Environment</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80f3-b359-c3f656231af6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Authentication Methods</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80f9-a29d-ee9a91708127" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">User Administration</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80e2-b89c-d814e9ef8170" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Password Policies</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80d7-9714-f51ca9ed9a77" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Vulnerabilities of Operating Systems</span><div class="indented"></div></li></ul><ul id="14179648-ed05-801c-b451-d92ca7509779" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Email Security</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80b8-bf12-ec6f836399c1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Internet Security</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-2</summary><div class="indented"><ul id="14179648-ed05-80dd-9d9e-fee60e1410c2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Introduction</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80c7-a59c-cfb995a69da4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Documentation of User Administration</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80dd-b7eb-f9eb0ce98457" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Operating System Authentication</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8016-8ef2-e064493c2e0a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Creating Users</span><div class="indented"></div></li></ul><ul id="14179648-ed05-807a-9d41-ce432e481c85" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Creating a SQL Server User</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80b6-bbb0-d4f96bd8aca6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Removing Users</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80c3-bada-c3c813eef237" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Modifying Users</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8071-9b9f-caca5015e162" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Default Users</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80cc-80b9-cd4dc2d3d526" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Remote Users</span><div class="indented"></div></li></ul><ul id="14179648-ed05-806b-b9b7-ddd43834c548" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Database Links</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80ef-b868-e15ea299f11c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Linked Servers</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80d3-a80e-f00d3179df21" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Remote Servers Practices for Administrators and Managers</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80ef-9873-cc95571a14b0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Profiles</span><div class="indented"></div></li></ul><ul id="14179648-ed05-804a-a53c-d99ebf7b76d7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Password Policies</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80eb-adb3-e6acd1ea34d5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Privileges and Roles: Introduction</span><div class="indented"></div></li></ul><ul id="14179648-ed05-807a-acae-cfd1254a47c8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Defining and Using Profiles</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8024-a9d8-d91143c83573" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Designing and Implementing Password Policies</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8054-840d-ceffa9d34aa1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Granting and Revoking User Privileges</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80fa-aac4-dc9590e881a5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Creating, Assigning, and Revoking User Roles</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8056-bb00-c30897908e7c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Best Practices</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-3</summary><div class="indented"><ul id="14179648-ed05-80cb-b0eb-e739317453df" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Types of Users</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8003-937e-f3ba909a46da" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Security Models</span><div class="indented"></div></li></ul><ul id="14179648-ed05-800a-9761-fd556e917664" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Application Types</span><div class="indented"></div></li></ul><ul id="14179648-ed05-802a-8749-ec7794d3d144" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Application Security Models</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8051-b351-e66b9dca6d84" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Transparent Data Encryption</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8076-8489-f4e72f70a081" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Column Encryption</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80ff-a9d2-dcb02136a01a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Full Database Encryption</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8018-bf77-cebd175216d3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Column-Level Security with SQL Server</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80da-97ac-e8d74d28737d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Virtual Private Databases (VPD)</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8014-89e6-e95b87f63c65" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Implementation of VPD using Views</span><div class="indented"></div></li></ul><ul id="14179648-ed05-805c-aa4c-c561910fc283" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Application Context in Oracle</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8032-82f2-f55750221cdb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Implementing Oracle VPD</span><div class="indented"></div></li></ul><ul id="14179648-ed05-805e-a882-d29ea2acb6f7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Viewing VPD Policies</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80f1-b5d1-c9e0de355686" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">VPD using Views</span><div class="indented"></div></li></ul><ul id="14179648-ed05-800c-bbf5-f05c0bfe1c86" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Application Contexts using Data Dictionary</span><div class="indented"></div></li></ul><ul id="14179648-ed05-80f4-85f1-eb38f2809a8b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Policy Manager</span><div class="indented"></div></li></ul><ul id="14179648-ed05-8092-885d-ef29940bbff0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Implementing Row and Column Level Security with SQL Server</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-4</summary><div class="indented"><ul id="700a75a5-c1a7-43f1-bdf5-a1373a789d5f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Ways to Audit a Database</span><div class="indented"></div></li></ul><ul id="d999ae4c-ac98-4554-8a57-32f361d3d087" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Application API Code</span><div class="indented"></div></li></ul><ul id="66ebf566-71e6-420f-b955-ede70ad933af" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Auditing with Trigger Code</span><div class="indented"></div></li></ul><ul id="a0a64c8b-3be5-4806-bbc1-d45e66a904a3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Normal Audit</span><div class="indented"></div></li></ul><ul id="7f1836a8-cf1a-4788-8546-401d3a52f0fa" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Unified Audit</span><div class="indented"></div></li></ul><ul id="58fe8345-7315-453c-915f-6725986314cd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Fine Grained Auditing</span><div class="indented"></div></li></ul><ul id="a3e6b5e9-2846-48b8-bc25-3301ebb6091e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Comparing Methods</span><div class="indented"></div></li></ul><ul id="fa606575-21c6-4198-9987-a787354119ae" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Auditing Database Activities: Oracle Database Activities</span><div class="indented"></div></li></ul><ul id="2250ddf0-1f78-45cf-ace4-233cf9421277" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Creating DLL Triggers with Oracle</span><div class="indented"></div></li></ul><ul id="f28d50a9-ed3e-48b5-8b55-3683830cb6da" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Auditing Database Activities with Oracle</span><div class="indented"></div></li></ul><ul id="0f741e5e-1563-472d-b438-935c96b172b1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Auditing Server Activity with SQL Server 2022</span><div class="indented"></div></li></ul><ul id="33de73e2-3e13-47d6-ae0d-7669ed9cf865" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Auditing Server Activity with Oracle21c</span><div class="indented"></div></li></ul><ul id="4cdd4b3e-e6e9-4915-8ff6-5c68e984694e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Case study: Project Security and Auditing</span><div class="indented"></div></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Unit-5</summary><div class="indented"><ul id="97bc1b53-4747-4be7-b03f-dd86f61c735f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Privacy Preserving Data Mining Techniques</span><div class="indented"></div></li></ul><ul id="2ed72f2f-c947-4a7e-92f0-9415e76f9890" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Privacy Preserving Data Mining Models and Algorithms</span><div class="indented"></div></li></ul><ul id="270a100c-9bc6-404d-ab03-20df747949df" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">The Randomization Method</span><div class="indented"></div></li></ul><ul id="1a96c387-84b0-4427-a9fb-05668a0a65c1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Group Based Anonymization</span><div class="indented"></div></li></ul><ul id="3a697e26-ec4c-41e6-abf5-55bf679898c3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Distributed Privacy-Preserving Data Mining</span><div class="indented"></div></li></ul><ul id="ada13171-667f-4217-bf68-f48c31c9728d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Privacy-Preservation of Application Results</span><div class="indented"></div></li></ul><ul id="b2009c32-9b3c-4d18-9ae6-3fbf17cfff68" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Applications of Privacy-Preserving Data Mining</span><div class="indented"></div></li></ul><ul id="c118d62e-a5a0-4707-b485-334ca42adabc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Case study: Joseph Domingo-Ferrer</span><div class="indented"></div></li></ul><ul id="3be0881b-5351-4b14-95d0-c85825f783b8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Nine Measures of Anonymity</span><div class="indented"></div></li></ul><ul id="edabe9ad-c7cc-48c0-a9ea-f0f5faaebfb6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">k-Anonymous Data Mining</span><div class="indented"></div></li></ul></div></details></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
